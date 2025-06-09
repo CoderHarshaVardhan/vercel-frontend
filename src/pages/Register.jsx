@@ -39,7 +39,7 @@ const Register = () => {
     if (!terms) return toast.error("⚠️ You must agree to the Terms & Privacy");
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+      const response = await fetch("https://vercel-backend-tsil.onrender.com/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),

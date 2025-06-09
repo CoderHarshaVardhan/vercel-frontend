@@ -12,7 +12,7 @@ export default function ViewSubmissions() {
   const fetchSubmissions = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:5000/api/admin/submissions", {
+      const res = await axios.get("https://vercel-backend-tsil.onrender.com/api/admin/submissions", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

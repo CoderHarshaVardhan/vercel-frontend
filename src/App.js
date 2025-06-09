@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";  // Import Navbar
 
 import Login from "./pages/Login";
-import SubmitForm from "./pages/SubmitForm";
 import ViewSubmissions from "./pages/ViewSubmissions";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
@@ -32,15 +31,6 @@ function App() {
             path="/view-submissions"
             element={
                 <ViewSubmissions />
-            }
-          />
-
-          <Route
-            path="/submit-form"
-            element={
-              <ProtectedRoute role="customer">
-                <SubmitForm />
-              </ProtectedRoute>
             }
           />
         </Routes>
