@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import "./Register.css"; // 👈 CSS import
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -51,7 +52,7 @@ const Register = () => {
 
       setTimeout(() => {
         navigate("/login");
-      }, 2000); // 2000 milliseconds = 2 seconds
+      }, 2000);
 
       setFormData({
         name: "",
@@ -66,13 +67,13 @@ const Register = () => {
   };
 
   return (
-    <div style={styles.body}>
-      <div style={styles.container}>
-        <h1 style={styles.heading}>Utsab Micro Finance Pvt. Ltd.</h1>
+    <div className="register-body">
+      <div className="register-container">
+        <h1 className="register-heading">Utsab Micro Finance Pvt. Ltd.</h1>
         <form onSubmit={handleSubmit} noValidate>
-          <label htmlFor="name" style={styles.label}>Name</label>
+          <label htmlFor="name" className="register-label">Name</label>
           <input
-            style={styles.input}
+            className="register-input"
             type="text"
             id="name"
             name="name"
@@ -82,9 +83,9 @@ const Register = () => {
             required
           />
 
-          <label htmlFor="email" style={styles.label}>Email Address</label>
+          <label htmlFor="email" className="register-label">Email Address</label>
           <input
-            style={styles.input}
+            className="register-input"
             type="email"
             id="email"
             name="email"
@@ -94,9 +95,9 @@ const Register = () => {
             required
           />
 
-          <label htmlFor="password" style={styles.label}>Password (min 6 characters)</label>
+          <label htmlFor="password" className="register-label">Password (min 6 characters)</label>
           <input
-            style={styles.input}
+            className="register-input"
             type="password"
             id="password"
             name="password"
@@ -106,9 +107,9 @@ const Register = () => {
             required
           />
 
-          <label htmlFor="confirm_password" style={styles.label}>Confirm Password</label>
+          <label htmlFor="confirm_password" className="register-label">Confirm Password</label>
           <input
-            style={styles.input}
+            className="register-input"
             type="password"
             id="confirm_password"
             name="confirm_password"
@@ -118,7 +119,7 @@ const Register = () => {
             required
           />
 
-          <div style={styles.terms}>
+          <div className="register-terms">
             <input
               type="checkbox"
               id="terms"
@@ -126,104 +127,26 @@ const Register = () => {
               checked={formData.terms}
               onChange={handleChange}
               required
-              style={styles.checkbox}
+              className="register-checkbox"
             />
-            <label htmlFor="terms" style={{ marginLeft: 8 }}>
+            <label htmlFor="terms">
               I agree to the{" "}
               <button
                 type="button"
                 onClick={() => alert("Terms & Privacy page coming soon")}
-                style={{ ...styles.link, background: "none", border: "none", padding: 0, cursor: "pointer" }}
+                className="register-link-button"
               >
                 Terms & Privacy
               </button>
             </label>
           </div>
 
-          <button type="submit" style={styles.button}>Register</button>
+          <button type="submit" className="register-button">Register</button>
         </form>
       </div>
       <ToastContainer position="bottom-center" />
     </div>
   );
-};
-
-const styles = {
-  body: {
-    fontFamily: "'Poppins', sans-serif",
-    background: "#0a3d62",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    minHeight: "100vh",
-    margin: 0,
-    padding: 20,
-  },
-  container: {
-    background: "#ffffff",
-    maxWidth: 550,
-    width: "100%",
-    padding: "35px 30px",
-    borderRadius: 12,
-    boxShadow: "0 10px 35px rgba(0, 0, 0, 0.4)",
-    color: "#0a3d62",
-  },
-  heading: {
-    textAlign: "center",
-    marginBottom: 30,
-    fontWeight: 600,
-    fontSize: "2rem",
-    color: "#002b80",
-  },
-  label: {
-    display: "block",
-    marginBottom: 8,
-    fontWeight: 600,
-    fontSize: "0.95rem",
-    color: "#004080",
-  },
-  input: {
-    width: "100%",
-    padding: "8px 10px",
-    marginBottom: 20,
-    border: "1.5px solid #a3c5ff",
-    borderRadius: 6,
-    fontSize: "0.95rem",
-    background: "#f8fbff",
-    color: "#002b80",
-    transition: "border-color 0.25s ease",
-    outline: "none",
-  },
-  terms: {
-    fontSize: "0.9rem",
-    marginBottom: 20,
-    color: "#333",
-    display: "flex",
-    alignItems: "center",
-  },
-  checkbox: {
-    marginRight: 10,
-    transform: "scale(1.2)",
-    accentColor: "#0050d1",
-  },
-  link: {
-    color: "#0050d1",
-    textDecoration: "none",
-    fontWeight: 600,
-  },
-  button: {
-    width: "100%",
-    background: "#0050d1",
-    color: "white",
-    border: "none",
-    padding: 12,
-    borderRadius: 8,
-    fontWeight: 600,
-    fontSize: "1rem",
-    cursor: "pointer",
-    boxShadow: "0 6px 14px rgba(0, 80, 209, 0.25)",
-    transition: "background 0.3s ease",
-  },
 };
 
 export default Register;
