@@ -1,5 +1,6 @@
 // Home.jsx
 import React from "react";
+import { Link } from 'react-router-dom';
 import "./Home.css";
 
 export default function Home() {
@@ -14,8 +15,8 @@ export default function Home() {
           Empowering rural lives with accessible financial solutions
         </p>
         <div className="home-btn-group">
-          <a href="/login" className="home-btn">Login</a>
-          <a href="/register" className="home-btn">Register</a>
+          <Link to="/login" className="home-btn">Login</Link>
+          <Link to="/register" className="home-btn">Register</Link>
         </div>
       </div>
     </div>

@@ -73,3 +73,60 @@
   transform: scale(1.07);
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
 }
+
+
+/* Add this below your existing styles */
+
+/* RESPONSIVE STYLES */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 30px 20px;
+  }
+
+  .home-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .home-container h1 {
+    font-size: 1.7rem;
+    text-align: center;
+  }
+
+  .home-tagline {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .home-btn-group {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .home-btn {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .home-tagline {
+    font-size: 0.95rem;
+  }
+
+  .home-logo {
+    height: 50px;
+    width: 50px;
+  }
+
+  .home-btn {
+    font-size: 0.95rem;
+    padding: 10px 24px;
+  }
+}

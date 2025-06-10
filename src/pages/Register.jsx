@@ -68,7 +68,7 @@ const Register = () => {
   return (
     <div style={styles.body}>
       <div style={styles.container}>
-        <h1 style={styles.heading}>Janjivan Gramin Micro Finance Pvt. Ltd.</h1>
+        <h1 style={styles.heading}>Utsab Micro Finance Pvt. Ltd.</h1>
         <form onSubmit={handleSubmit} noValidate>
           <label htmlFor="name" style={styles.label}>Name</label>
           <input
