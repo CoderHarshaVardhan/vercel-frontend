@@ -58,6 +58,8 @@ label, legend {
 
 /* Inputs and selects */
 input[type="text"],
+input[type="email"],
+input[type="password"],
 input[type="number"],
 input[type="date"],
 input[type="tel"],
@@ -76,6 +78,7 @@ textarea {
   background-color: #fff;
 }
 
+/* Focus effect */
 input:focus,
 select:focus,
 textarea:focus {
@@ -92,7 +95,8 @@ fieldset {
 }
 
 /* Checkbox labels inline */
-fieldset label {
+fieldset label,
+.terms-label {
   display: inline-flex;
   align-items: center;
   margin-right: 20px;
@@ -106,10 +110,12 @@ input[type="checkbox"] {
   margin-right: 8px;
   transform: scale(1.2);
   cursor: pointer;
+  accent-color: #4b6fff;
 }
 
 /* Submit button */
-button[type="submit"] {
+button[type="submit"],
+button.submit-btn {
   width: 100%;
   background: linear-gradient(to right, #4b6fff, #5f9eff);
   color: white;
@@ -123,7 +129,8 @@ button[type="submit"] {
   box-shadow: 0 4px 10px rgba(75, 111, 255, 0.3);
 }
 
-button[type="submit"]:hover {
+button[type="submit"]:hover,
+button.submit-btn:hover {
   background: linear-gradient(to right, #3a5ce0, #4c87ff);
   box-shadow: 0 6px 14px rgba(75, 111, 255, 0.45);
   transform: scale(1.02);
@@ -140,16 +147,40 @@ p {
 
 /* Responsive tweaks */
 @media (max-width: 640px) {
+  body {
+    padding: 20px 10px;
+  }
+
   form {
-    padding: 25px;
+    padding: 25px 20px;
+    border-radius: 12px;
   }
 
   form h2 {
     font-size: 1.5rem;
+    margin-bottom: 25px;
   }
 
-  fieldset label {
+  label, legend {
+    font-size: 0.95rem;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 10px 14px;
+    font-size: 0.95rem;
+  }
+
+  fieldset label,
+  .terms-label {
     margin-right: 12px;
     font-size: 0.9rem;
+  }
+
+  button[type="submit"],
+  button.submit-btn {
+    font-size: 1rem;
+    padding: 12px;
   }
 }
