@@ -165,211 +165,217 @@ const Form = ({ onSubmit }) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit} noValidate style={{ maxWidth: 600, margin: "auto" }}>
-                {/* Branch */}
-                <label>
-                    Branch *
-                    <input
-                        type="text"
-                        name="branch"
-                        value={formData.branch}
-                        onChange={handleChange}
-                        required
-                    />
-                    {errors.branch && <p style={{ color: "red" }}>{errors.branch}</p>}
-                </label>
+            <div className="form-wrapper">
+                <form onSubmit={handleSubmit} noValidate style={{ maxWidth: 600, margin: "auto" }}></form>
+                <form onSubmit={handleSubmit}>
+                    {/* ...your fields here... */}
+                    {/* Branch */}
+                    <label>
+                        Branch *
+                        <input
+                            type="text"
+                            name="branch"
+                            value={formData.branch}
+                            onChange={handleChange}
+                            required
+                        />
+                        {errors.branch && <p style={{ color: "red" }}>{errors.branch}</p>}
+                    </label>
 
-                {/* Branch Code */}
-                <label>
-                    Branch Code *
-                    <input
-                        type="text"
-                        name="branchCode"
-                        value={formData.branchCode}
-                        onChange={handleChange}
-                        required
-                    />
-                    {errors.branchCode && <p style={{ color: "red" }}>{errors.branchCode}</p>}
-                </label>
+                    {/* Branch Code */}
+                    <label>
+                        Branch Code *
+                        <input
+                            type="text"
+                            name="branchCode"
+                            value={formData.branchCode}
+                            onChange={handleChange}
+                            required
+                        />
+                        {errors.branchCode && <p style={{ color: "red" }}>{errors.branchCode}</p>}
+                    </label>
 
-                {/* FO Name */}
-                <label>
-                    Field Officer Name *
-                    <select name="foName" value={formData.foName} onChange={handleChange} required>
-                        <option value="">-- Select FO Name --</option>
-                        {FO_NAMES.map((name) => (
-                            <option key={name} value={name}>{name}</option>
+                    {/* FO Name */}
+                    <label>
+                        Field Officer Name *
+                        <select name="foName" value={formData.foName} onChange={handleChange} required>
+                            <option value="">-- Select FO Name --</option>
+                            {FO_NAMES.map((name) => (
+                                <option key={name} value={name}>{name}</option>
+                            ))}
+                        </select>
+                        {errors.foName && <p style={{ color: "red" }}>{errors.foName}</p>}
+                    </label>
+
+                    {/* Date */}
+                    <label>
+                        Date *
+                        <input
+                            type="date"
+                            name="date"
+                            value={formData.date}
+                            onChange={handleChange}
+                            required
+                        />
+                        {errors.date && <p style={{ color: "red" }}>{errors.date}</p>}
+                    </label>
+
+                    {/* Village */}
+                    <label>
+                        Village *
+                        <input
+                            type="text"
+                            name="village"
+                            value={formData.village}
+                            onChange={handleChange}
+                            required
+                        />
+                        {errors.village && <p style={{ color: "red" }}>{errors.village}</p>}
+                    </label>
+
+                    {/* Group Name */}
+                    <label>
+                        Group Name *
+                        <input
+                            type="text"
+                            name="groupName"
+                            value={formData.groupName}
+                            onChange={handleChange}
+                            required
+                        />
+                        {errors.groupName && <p style={{ color: "red" }}>{errors.groupName}</p>}
+                    </label>
+
+                    {/* Group Code */}
+                    <label>
+                        Group Code *
+                        <input
+                            type="text"
+                            name="groupCode"
+                            value={formData.groupCode}
+                            onChange={handleChange}
+                            required
+                        />
+                        {errors.groupCode && <p style={{ color: "red" }}>{errors.groupCode}</p>}
+                    </label>
+
+                    {/* Member Name */}
+                    <label>
+                        Member Name *
+                        <input
+                            type="text"
+                            name="memberName"
+                            value={formData.memberName}
+                            onChange={handleChange}
+                            required
+                        />
+                        {errors.memberName && <p style={{ color: "red" }}>{errors.memberName}</p>}
+                    </label>
+
+                    {/* Co-Applicant Name */}
+                    <label>
+                        Co-Applicant Name
+                        <input
+                            type="text"
+                            name="coApplicantName"
+                            value={formData.coApplicantName}
+                            onChange={handleChange}
+                        />
+                    </label>
+
+                    {/* Mobile Number */}
+                    <label>
+                        Mobile Number *
+                        <input
+                            type="tel"
+                            name="mobileNumber"
+                            value={formData.mobileNumber}
+                            onChange={handleChange}
+                            required
+                            placeholder="10-digit mobile number"
+                        />
+                        {errors.mobileNumber && <p style={{ color: "red" }}>{errors.mobileNumber}</p>}
+                    </label>
+
+                    {/* Loan Amount */}
+                    <label>
+                        Loan Amount (₹) *
+                        <input
+                            type="number"
+                            name="loanAmount"
+                            value={formData.loanAmount || 50000}
+                            readOnly
+                        />
+                    </label>
+
+                    {/* KYC Collected (checkbox group) */}
+                    <fieldset>
+                        <legend>KYC Collected *</legend>
+                        {KYC_OPTIONS.map((doc) => (
+                            <label key={doc} style={{ marginRight: 10 }}>
+                                <input
+                                    type="checkbox"
+                                    name="kycCollected"
+                                    value={doc}
+                                    checked={formData.kycCollected.includes(doc)}
+                                    onChange={handleChange}
+                                />
+                                {doc}
+                            </label>
                         ))}
-                    </select>
-                    {errors.foName && <p style={{ color: "red" }}>{errors.foName}</p>}
-                </label>
+                        {errors.kycCollected && <p style={{ color: "red" }}>{errors.kycCollected}</p>}
+                    </fieldset>
 
-                {/* Date */}
-                <label>
-                    Date *
-                    <input
-                        type="date"
-                        name="date"
-                        value={formData.date}
-                        onChange={handleChange}
-                        required
-                    />
-                    {errors.date && <p style={{ color: "red" }}>{errors.date}</p>}
-                </label>
+                    {/* Product Name */}
+                    <label>
+                        Product Name *
+                        <select
+                            name="productName"
+                            value={formData.productName}
+                            onChange={handleChange}
+                            required
+                        >
+                            <option value="">-- Select Product --</option>
+                            {PRODUCT_NAMES.map((prod) => (
+                                <option key={prod} value={prod}>
+                                    {prod}
+                                </option>
+                            ))}
+                        </select>
+                        {errors.productName && <p style={{ color: "red" }}>{errors.productName}</p>}
+                    </label>
 
-                {/* Village */}
-                <label>
-                    Village *
-                    <input
-                        type="text"
-                        name="village"
-                        value={formData.village}
-                        onChange={handleChange}
-                        required
-                    />
-                    {errors.village && <p style={{ color: "red" }}>{errors.village}</p>}
-                </label>
+                    {/* Product Amount */}
+                    {/* Product Amount */}
+                    <label>
+                        Product Amount (₹) *
+                        <input
+                            type="number"
+                            name="productAmount"
+                            value={formData.productAmount}
+                            readOnly
+                        />
+                    </label>
 
-                {/* Group Name */}
-                <label>
-                    Group Name *
-                    <input
-                        type="text"
-                        name="groupName"
-                        value={formData.groupName}
-                        onChange={handleChange}
-                        required
-                    />
-                    {errors.groupName && <p style={{ color: "red" }}>{errors.groupName}</p>}
-                </label>
+                    {/* Remarks */}
+                    <label>
+                        Remarks
+                        <textarea
+                            name="remarks"
+                            value={formData.remarks}
+                            onChange={handleChange}
+                            rows={3}
+                            placeholder="Additional notes"
+                        />
+                    </label>
 
-                {/* Group Code */}
-                <label>
-                    Group Code *
-                    <input
-                        type="text"
-                        name="groupCode"
-                        value={formData.groupCode}
-                        onChange={handleChange}
-                        required
-                    />
-                    {errors.groupCode && <p style={{ color: "red" }}>{errors.groupCode}</p>}
-                </label>
+                    <button type="submit" style={{ marginTop: 15 }}>
+                        Submit
+                    </button>
+                </form>
+            </div>
 
-                {/* Member Name */}
-                <label>
-                    Member Name *
-                    <input
-                        type="text"
-                        name="memberName"
-                        value={formData.memberName}
-                        onChange={handleChange}
-                        required
-                    />
-                    {errors.memberName && <p style={{ color: "red" }}>{errors.memberName}</p>}
-                </label>
 
-                {/* Co-Applicant Name */}
-                <label>
-                    Co-Applicant Name
-                    <input
-                        type="text"
-                        name="coApplicantName"
-                        value={formData.coApplicantName}
-                        onChange={handleChange}
-                    />
-                </label>
-
-                {/* Mobile Number */}
-                <label>
-                    Mobile Number *
-                    <input
-                        type="tel"
-                        name="mobileNumber"
-                        value={formData.mobileNumber}
-                        onChange={handleChange}
-                        required
-                        placeholder="10-digit mobile number"
-                    />
-                    {errors.mobileNumber && <p style={{ color: "red" }}>{errors.mobileNumber}</p>}
-                </label>
-
-                {/* Loan Amount */}
-                <label>
-                    Loan Amount (₹) *
-                    <input
-                        type="number"
-                        name="loanAmount"
-                        value={formData.loanAmount || 50000}
-                        readOnly
-                    />
-                </label>
-
-                {/* KYC Collected (checkbox group) */}
-                <fieldset>
-                    <legend>KYC Collected *</legend>
-                    {KYC_OPTIONS.map((doc) => (
-                        <label key={doc} style={{ marginRight: 10 }}>
-                            <input
-                                type="checkbox"
-                                name="kycCollected"
-                                value={doc}
-                                checked={formData.kycCollected.includes(doc)}
-                                onChange={handleChange}
-                            />
-                            {doc}
-                        </label>
-                    ))}
-                    {errors.kycCollected && <p style={{ color: "red" }}>{errors.kycCollected}</p>}
-                </fieldset>
-
-                {/* Product Name */}
-                <label>
-                    Product Name *
-                    <select
-                        name="productName"
-                        value={formData.productName}
-                        onChange={handleChange}
-                        required
-                    >
-                        <option value="">-- Select Product --</option>
-                        {PRODUCT_NAMES.map((prod) => (
-                            <option key={prod} value={prod}>
-                                {prod}
-                            </option>
-                        ))}
-                    </select>
-                    {errors.productName && <p style={{ color: "red" }}>{errors.productName}</p>}
-                </label>
-
-                {/* Product Amount */}
-                {/* Product Amount */}
-                <label>
-                    Product Amount (₹) *
-                    <input
-                        type="number"
-                        name="productAmount"
-                        value={formData.productAmount}
-                        readOnly
-                    />
-                </label>
-
-                {/* Remarks */}
-                <label>
-                    Remarks
-                    <textarea
-                        name="remarks"
-                        value={formData.remarks}
-                        onChange={handleChange}
-                        rows={3}
-                        placeholder="Additional notes"
-                    />
-                </label>
-
-                <button type="submit" style={{ marginTop: 15 }}>
-                    Submit
-                </button>
-            </form>
             <ToastContainer position="top-right" autoClose={3000} />
         </>
     );

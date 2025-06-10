@@ -7,11 +7,17 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(to right, #e0eafc, #cfdef3);
-  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+/* Center wrapper */
+.form-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding: 40px 20px;
   min-height: 100vh;
+  overflow-y: auto;
 }
 
 /* Form container */
@@ -147,7 +153,7 @@ p {
 
 /* Responsive tweaks */
 @media (max-width: 640px) {
-  body {
+  .form-wrapper {
     padding: 20px 10px;
   }
 
