@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
+import { useAuth } from "../context/AuthContext"; // Adjust path if different
 import "./Login.css";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
+  const { login } = useAuth(); // <-- useAuth hook
 
   useEffect(() => {
     document.getElementById("email")?.focus();
@@ -28,13 +29,14 @@ const Login = () => {
       toast.error("⚠️ Please enter a valid email address");
       return;
     }
+
     if (password.length < 6) {
       toast.error("⚠️ Password must be at least 6 characters");
       return;
     }
 
     try {
-      const res = await fetch("https://vercel-backend-tsil.onrender.com/api/auth/login", {
+      const res = await fetch("http://localhost:5000/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -44,10 +46,11 @@ const Login = () => {
       if (!res.ok) throw new Error(data.message || "Login failed");
 
       toast.success("✅ Login successful!");
-      localStorage.setItem("token", data.token);
-      const decoded = jwtDecode(data.token);
+      login(data.token); // <-- update auth context
 
-      navigate(decoded.role === "admin" ? "/view-submissions" : "/form");
+      const role = JSON.parse(atob(data.token.split(".")[1])).role;
+      navigate(role === "admin" ? "/admin" : "/home");
+
       setFormData({ email: "", password: "" });
     } catch (err) {
       toast.error(`⚠️ ${err.message}`);
@@ -87,7 +90,18 @@ const Login = () => {
           <button type="submit" className="login-button">Login</button>
         </form>
       </div>
-      <ToastContainer position="bottom-center" />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark" // optional for dark mode
+      />
     </div>
   );
 };

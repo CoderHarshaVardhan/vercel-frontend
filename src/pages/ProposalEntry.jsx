@@ -32,7 +32,7 @@ const PRODUCT_PRICES = {
 
 const PRODUCT_NAMES = Object.keys(PRODUCT_PRICES);
 
-const Form = ({ onSubmit }) => {
+const ProposalEntry = ({ onSubmit }) => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         branch: "",
@@ -140,7 +140,7 @@ const Form = ({ onSubmit }) => {
             const token = localStorage.getItem("token");
 
             const response = await axios.post(
-                "https://vercel-backend-tsil.onrender.com/api/submit-form",
+                "https://vercel-backend-vnvy.onrender.com/api/submit-form",
                 submitData,
                 {
                     headers: {
@@ -375,4 +375,4 @@ const Form = ({ onSubmit }) => {
     );
 };
 
-export default Form;
+export default ProposalEntry;

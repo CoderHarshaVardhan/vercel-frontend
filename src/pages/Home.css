@@ -130,3 +130,51 @@
     padding: 10px 24px;
   }
 }
+
+
+.company-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #f8f9fa; /* Light gray background */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  gap: 1.5rem;
+}
+
+.company-header img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain; /* Ensures logo maintains aspect ratio */
+  border-radius: 4px;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid #e8e8e8;
+}
+
+.company-name {
+  margin: 0;
+  color: #1890ff; /* Ant Design primary blue */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .company-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .company-header img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .company-name {
+    font-size: 1.25rem !important;
+  }
+}

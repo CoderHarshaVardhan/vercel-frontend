@@ -5,14 +5,14 @@ import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 import "./ViewSubmissions.css";
 
-export default function ViewSubmissions() {
+export default function ProposalEntries() {
   const [submissions, setSubmissions] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchSubmissions = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("https://vercel-backend-tsil.onrender.com/api/admin/submissions", {
+      const res = await axios.get("https://vercel-backend-vnvy.onrender.com/api/admin/submissions", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -79,7 +79,7 @@ export default function ViewSubmissions() {
 
   return (
     <div className="view-submissions-container">
-      <h2 className="neon-title">📄 View Submissions</h2>
+      <h2 className="neon-title">📄 Proposal Entries</h2>
 
       <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
         <button className="export-btn" onClick={exportToExcel}>
